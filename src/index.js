@@ -27,7 +27,7 @@ class Sorter {
         }
         indices.sort(function(a, b) {
             return a - b;
-        })
+        });
 
         for (let i = 0; i < indicesLength; i++) {
             tempArr.push(this.arr[indices[i]]);
