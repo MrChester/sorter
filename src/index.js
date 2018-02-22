@@ -21,6 +21,7 @@ class Sorter {
 
     sort(indices) {
         let indicesLength = indices.length;
+        let tempArr = [];
         if (indicesLength < 2) {
             return this.arr;
         }
@@ -28,18 +29,19 @@ class Sorter {
             return a - b;
         })
 
-        for (let i = 0; i < indicesLength - 1; i++) {
-            for (let j = 1; j < indicesLength - i; j++) {
-                if (this.arr[indices[j - 1]] > this.arr[indices[j]]) {
-                    this.arr[indices[j]] = [this.arr[indices[j - 1]], this.arr[indices[j - 1]] = this.arr[indices[j]]][0];
-                }
-            }
+        for (let i = 0; i < indicesLength; i++) {
+            tempArr.push(this.arr[indices[i]]);
+        }
+
+        tempArr.sort(this.comparator);
+        for (let i = 0; i < indicesLength; i++) {
+            this.arr[indices[i]] = tempArr[i];
         }
         return this.arr;
     }
 
     setComparator(compareFunction) {
-        // your implementation
+        this.comparator = compareFunction;
     }
 }
 
