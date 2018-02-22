@@ -30,7 +30,9 @@ class Sorter {
 
         for (let i = 0; i < indicesLength - 1; i++) {
             for (let j = 1; j < indicesLength - i; j++) {
-                this.arr[indices[j]] = [this.arr[indices[j - 1]], this.arr[indices[j - 1]] = this.arr[indices[j]]][0];
+                if (this.arr[indices[j - 1]] > this.arr[indices[j]]) {
+                    this.arr[indices[j]] = [this.arr[indices[j - 1]], this.arr[indices[j - 1]] = this.arr[indices[j]]][0];
+                }
             }
         }
         return this.arr;
