@@ -28,9 +28,9 @@ class Sorter {
             return a - b;
         })
 
-        for (let i = indices[0]; i < indicesLength - 1; i++) {
-            for (let j = indices[1]; j < indicesLength - i; j++) {
-                this.arr[j] = [this.arr[j - 1], this.arr[j - 1] = this.arr[j]][0];
+        for (let i = 0; i < indicesLength - 1; i++) {
+            for (let j = 1; j < indicesLength - i; j++) {
+                this.arr[indices[j]] = [this.arr[indices[j - 1]], this.arr[indices[j - 1]] = this.arr[indices[j]]][0];
             }
         }
         return this.arr;
