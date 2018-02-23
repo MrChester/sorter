@@ -20,21 +20,25 @@ class Sorter {
     }
 
     sort(indices) {
-        let indicesLength = indices.length;
+        // let indicesLength = indices.length;
         let tempArr = [];
-        if (indicesLength < 2) {
+        if (indices.length < 2) {
             return this.arr;
         }
-        indices.sort(function(a, b) {
-            return a - b;
-        });
+        indices.sort();
 
-        for (let i = 0; i < indicesLength; i++) {
+        for (let i = 0; i < indices.length; i++) {
             tempArr.push(this.arr[indices[i]]);
         }
-
-        tempArr.sort(this.comparator);
-        for (let i = 0; i < indicesLength; i++) {
+        if (this.comparator !== undefined) {
+            tempArr.sort(this.comparator);
+        } else {
+            tempArr.sort(function(a, b) {
+                return a - b;
+            });
+        }
+        // tempArr.sort(this.comparator);
+        for (let i = 0; i < indices.length; i++) {
             this.arr[indices[i]] = tempArr[i];
         }
         return this.arr;
